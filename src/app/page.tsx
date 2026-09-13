@@ -2,7 +2,6 @@
 import { useReveal } from "@/components/useReveal";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Trust from "@/components/Trust";
 import Experience from "@/components/Experience";
 import Dual from "@/components/Dual";
 import AppSection from "@/components/AppSection";
@@ -16,7 +15,6 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Trust />
         <Experience />
         <Dual />
         <AppSection />
