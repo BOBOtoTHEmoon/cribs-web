@@ -19,7 +19,7 @@ export default function Hero() {
             Cribs connects tenants and landlords directly. No agents. No middlemen. Just easy, transparent renting.
           </p>
 
-          <div className="flex gap-[0.85rem] flex-wrap justify-center lg:justify-start">
+                    <div className="flex gap-[0.6rem] sm:gap-[0.85rem] justify-center lg:justify-start">
             <button className="inline-flex items-center gap-2 px-[1.9rem] py-[0.95rem] rounded-[11px] text-[0.92rem] font-bold border-0 cursor-pointer transition-all" style={{ background: "var(--gold)", color: "var(--bg)", boxShadow: "0 8px 30px rgba(200,168,78,0.15)" }} onMouseEnter={(e) => { e.currentTarget.style.background = "var(--gold-hover)"; e.currentTarget.style.transform = "translateY(-2px)"; }} onMouseLeave={(e) => { e.currentTarget.style.background = "var(--gold)"; e.currentTarget.style.transform = "none"; }}>
               <Search size={18} /> Find a Home
             </button>
