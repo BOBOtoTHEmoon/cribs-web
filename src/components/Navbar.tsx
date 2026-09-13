@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { House, Smartphone } from "lucide-react";
+import Link from "next/link";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -22,18 +23,23 @@ export default function Navbar() {
       }}
     >
       <div className="max-w-[1200px] mx-auto px-5 sm:px-10 h-[68px] flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2 text-[1.4rem] font-extrabold tracking-tight" style={{ color: "var(--cream)" }}>
+        <Link href="/" className="flex items-center gap-2 text-[1.4rem] font-extrabold tracking-tight" style={{ color: "var(--cream)" }}>
           <span className="w-[30px] h-[30px] rounded-lg flex items-center justify-center text-base" style={{ background: "var(--gold)", color: "var(--bg)" }}>
             <House size={18} />
           </span>
           Cribs
-        </a>
+        </Link>
 
         <div className="hidden md:flex gap-9">
-          {["How it works", "For Tenants", "For Landlords", "About Us"].map((l) => (
-            <a key={l} href="#" className="text-[0.85rem] font-medium transition-colors" style={{ color: "var(--text)" }} onMouseEnter={(e) => (e.currentTarget.style.color = "var(--cream)")} onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text)")}>
-              {l}
-            </a>
+          {[
+            { label: "How it works", href: "/how-it-works" },
+            { label: "For Tenants", href: "/tenants" },
+            { label: "For Landlords", href: "/landlords" },
+            { label: "About Us", href: "/about" },
+          ].map((l) => (
+            <Link key={l.label} href={l.href} className="text-[0.85rem] font-medium transition-colors" style={{ color: "var(--text)" }} onMouseEnter={(e) => (e.currentTarget.style.color = "var(--cream)")} onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text)")}>
+              {l.label}
+            </Link>
           ))}
         </div>
 
