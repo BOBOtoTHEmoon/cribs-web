@@ -1,9 +1,9 @@
-import { Bell, Heart, Lock, MapPin } from "lucide-react";
+import { Bell, Heart, Wallet, MapPin } from "lucide-react";
 
 const FEATURES = [
   { icon: Bell, title: "Instant Notifications", desc: "Get real-time updates on new listings and messages." },
   { icon: Heart, title: "Save Favorites", desc: "Save properties you love and come back anytime." },
-  { icon: Lock, title: "Secure & Private", desc: "Your data and conversations are always protected." },
+  { icon: Wallet, title: "Property Management", desc: "Landlords collect rent, draft quick notices, and manage tenants with ease." },
 ];
 
 export default function AppSection() {

@@ -12,8 +12,8 @@ export default function Hero() {
             The smarter way to rent and <span style={{ color: "var(--gold)" }}>list properties.</span>
           </h1>
 
-          <p className="text-[1.05rem] leading-[1.7] max-w-[430px] mb-9 mx-auto lg:mx-0" style={{ color: "var(--text-2)" }}>
-            Cribs connects tenants and landlords directly. No agents. No middlemen. Just easy, transparent renting.
+                  <p className="text-[1.05rem] leading-[1.7] max-w-[430px] mb-9 mx-auto lg:mx-0" style={{ color: "var(--text-2)" }}>
+            Cribs makes renting and property management simple. Verified listings, secure payments, and everything you need in one place.
           </p>
 
           <div className="flex gap-[0.6rem] sm:gap-[0.85rem] justify-center lg:justify-start">
