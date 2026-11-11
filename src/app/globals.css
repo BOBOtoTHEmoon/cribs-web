@@ -53,8 +53,13 @@ a {
   text-decoration: none;
 }
 
-/* Keep form fields at 16px on phones so iOS does not zoom in */
-input, select, textarea { font-size: max(16px, 1em); }
+/* Stop iPhones zooming in when a field is tapped. iOS zooms if the text
+   renders below 16px; the page runs at 85% scale on touch devices, so fields
+   need 19px (19 x 0.85 = 16.15) to stay above that line. */
+input, select, textarea { font-size: 16px; }
+@media (hover: none), (pointer: coarse) {
+  input, select, textarea { font-size: 19px !important; }
+}
 
 .font-anton { font-family: var(--font-anton), Impact, sans-serif; font-weight: 400; }
 

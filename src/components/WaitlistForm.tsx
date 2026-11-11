@@ -86,7 +86,7 @@ export default function WaitlistForm({ align = "left" }: { align?: "left" | "cen
           value={email}
           onChange={(e) => { setEmail(e.target.value); if (status === "error") setStatus("idle"); }}
           className="flex-1 min-w-0 px-4 py-[0.8rem] rounded-[11px] outline-none transition-colors focus:border-[var(--gold)]"
-          style={{ fontSize: 16, background: "var(--card-2)", border: "1px solid var(--card-border)", color: "var(--cream)" }}
+          style={{ background: "var(--card-2)", border: "1px solid var(--card-border)", color: "var(--cream)" }}
         />
         {/* honeypot */}
         <input
