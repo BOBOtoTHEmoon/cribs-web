@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Search, HousePlus, BadgeCheck, ShieldCheck, MessagesSquare } from "lucide-react";
+import { Search, HousePlus } from "lucide-react";
+import { IcHomeCheck, IcShield, IcChat } from "./CribsIcons";
 import HeroBg from "./HeroBg";
 import IPhone from "./IPhone";
 import { HomeScreen, ChatScreen } from "./AppScreens";
@@ -28,16 +29,14 @@ export default function Hero() {
             {/* trust row */}
             <div className="flex gap-8 mt-12 justify-center lg:justify-start">
               {[
-                { icon: BadgeCheck, label: "Verified\nListings Only" },
-                { icon: ShieldCheck, label: "Safe, Secure\n& Transparent" },
-                { icon: MessagesSquare, label: "Direct Chat\nwith Landlords" },
+                { icon: IcHomeCheck, label: "Verified\nListings Only" },
+                { icon: IcShield, label: "Safe, Secure\n& Transparent" },
+                { icon: IcChat, label: "Direct Chat\nwith Landlords" },
               ].map((t) => {
                 const Icon = t.icon;
                 return (
                   <div key={t.label} className="group flex flex-col items-center lg:items-start gap-2">
-                    <div className="w-11 h-11 rounded-[12px] flex items-center justify-center transition-all duration-300 group-hover:-translate-y-[3px] group-hover:bg-[var(--gold)] group-hover:text-[var(--bg)]" style={{ background: "var(--gold-dim)", border: "1px solid rgba(200,168,78,0.2)", color: "var(--gold)" }}>
-                      <Icon size={20} />
-                    </div>
+                    <span className="ic transition-transform duration-300 group-hover:-translate-y-[3px]"><Icon size={32} /></span>
                     <div className="text-[0.72rem] font-semibold leading-tight text-center lg:text-left whitespace-pre-line" style={{ color: "var(--text-2)" }}>{t.label}</div>
                   </div>
                 );

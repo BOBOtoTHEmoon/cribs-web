@@ -1,12 +1,12 @@
 import { pageMeta } from "@/lib/seo";
 import PageShell from "@/components/PageShell";
 import PageHero from "@/components/PageHero";
-import { Target, Eye, Heart } from "lucide-react";
+import { IcFlag, IcHorizon, IcGem } from "@/components/CribsIcons";
 
 const VALUES = [
-  { icon: Target, title: "Our Mission", desc: "To make renting in Nigeria transparent, safe, and stress-free by connecting tenants and landlords directly, cutting out the middlemen who make housing harder than it should be." },
-  { icon: Eye, title: "Our Vision", desc: "A future where anyone can find a home or list a property with total confidence, backed by verification, technology, and trust at every step." },
-  { icon: Heart, title: "Our Values", desc: "Honesty over hustle. Transparency over shortcuts. People over profit. We build for the renter and the landlord, not the agent taking a cut." },
+  { icon: IcFlag, title: "Our Mission", desc: "To make renting in Nigeria transparent, safe, and stress-free by connecting tenants and landlords directly, cutting out the middlemen who make housing harder than it should be." },
+  { icon: IcHorizon, title: "Our Vision", desc: "A future where anyone can find a home or list a property with total confidence, backed by verification, technology, and trust at every step." },
+  { icon: IcGem, title: "Our Values", desc: "Honesty over hustle. Transparency over shortcuts. People over profit. We build for the renter and the landlord, not the agent taking a cut." },
 ];
 
 export const metadata = pageMeta({
@@ -25,14 +25,20 @@ export default function About() {
         </div>
       </section>
       <section className="max-w-[1200px] mx-auto px-5 sm:px-10 pb-[clamp(4rem,10vh,7rem)]">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
+        <div className="reveal panel-h rounded-[20px] overflow-hidden grid md:grid-cols-3" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
           {VALUES.map((v, i) => {
             const Icon = v.icon;
             return (
-              <div key={v.title} className={`reveal card-h ${i === 1 ? "reveal-d1" : i === 2 ? "reveal-d2 col-span-2 md:col-span-1" : ""} p-5 sm:p-8 rounded-[16px]`} style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
-                <div className="ic w-11 h-11 sm:w-[52px] sm:h-[52px] rounded-[13px] flex items-center justify-center mb-4 sm:mb-5" style={{ background: "var(--gold-dim)", color: "var(--gold)" }}><Icon size={24} /></div>
-                <div className="text-[1.05rem] font-bold mb-2" style={{ color: "var(--cream)" }}>{v.title}</div>
-                <div className="text-[0.78rem] sm:text-[0.85rem] leading-[1.6]" style={{ color: "var(--text)" }}>{v.desc}</div>
+              <div
+                key={v.title}
+                className={`group flex md:flex-col gap-4 md:gap-0 p-5 sm:p-8 transition-colors duration-300 hover:bg-[var(--card-2)] ${i > 0 ? "border-t md:border-t-0 md:border-l" : ""}`}
+                style={{ borderColor: "var(--card-border)" }}
+              >
+                <span className="ic flex-shrink-0 md:mb-5 transition-transform duration-500 group-hover:-translate-y-[3px]"><Icon size={34} /></span>
+                <div>
+                  <div className="text-[1.02rem] sm:text-[1.1rem] font-bold mb-[0.35rem]" style={{ color: "var(--cream)" }}>{v.title}</div>
+                  <div className="text-[0.84rem] sm:text-[0.88rem] leading-[1.6]" style={{ color: "var(--text)" }}>{v.desc}</div>
+                </div>
               </div>
             );
           })}

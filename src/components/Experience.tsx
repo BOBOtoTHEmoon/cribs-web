@@ -1,10 +1,10 @@
-import { Users, SearchCheck, ShieldCheck, MessageCircle } from "lucide-react";
+import { IcUsers, IcSearchHome, IcShield, IcChat } from "./CribsIcons";
 
 const CARDS = [
-  { icon: Users, title: "Direct Connection", desc: "Tenants and landlords connect directly. No agents, no extra fees.", d: "" },
-  { icon: SearchCheck, title: "Easy Search", desc: "Find the right home in the right location, faster.", d: "reveal-d1" },
-  { icon: ShieldCheck, title: "Verified & Trusted", desc: "Every listing is verified for your safety and peace of mind.", d: "reveal-d2" },
-  { icon: MessageCircle, title: "Seamless Communication", desc: "Chat, negotiate and close deals all in one place.", d: "reveal-d3" },
+  { icon: IcUsers, title: "Direct Connection", desc: "Tenants and landlords connect directly. No agents, no extra fees.", d: "" },
+  { icon: IcSearchHome, title: "Easy Search", desc: "Find the right home in the right location, faster.", d: "reveal-d1" },
+  { icon: IcShield, title: "Verified & Trusted", desc: "Every listing is verified for your safety and peace of mind.", d: "reveal-d2" },
+  { icon: IcChat, title: "Seamless Communication", desc: "Chat, negotiate and close deals all in one place.", d: "reveal-d3" },
 ];
 
 export default function Experience() {
@@ -28,9 +28,7 @@ export default function Experience() {
             const Icon = c.icon;
             return (
               <div key={c.title} className={`reveal card-h ${c.d} p-5 sm:p-9 sm:px-6 rounded-[16px] relative overflow-hidden`} style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
-                <div className="ic w-11 h-11 sm:w-[52px] sm:h-[52px] rounded-[13px] flex items-center justify-center mb-4 sm:mb-5" style={{ background: "var(--gold-dim)", color: "var(--gold)" }}>
-                  <Icon size={24} />
-                </div>
+                <span className="ic mb-4 sm:mb-5"><Icon size={34} /></span>
                 <div className="text-[0.9rem] sm:text-[0.95rem] font-bold mb-2 leading-snug" style={{ color: "var(--cream)" }}>{c.title}</div>
                 <div className="text-[0.78rem] sm:text-[0.82rem] leading-[1.6]" style={{ color: "var(--text)" }}>{c.desc}</div>
               </div>

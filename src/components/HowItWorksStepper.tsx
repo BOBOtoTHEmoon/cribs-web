@@ -1,16 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Search, CalendarCheck, KeyRound, MessagesSquare, ShieldCheck, CreditCard } from "lucide-react";
+import { IcSearchHome, IcCalendar, IcKey, IcChat, IcShield, IcCard } from "./CribsIcons";
 import IPhone from "./IPhone";
 import { HomeScreen, ChatThreadScreen, InspectScreen, PayScreen, MoveInScreen, SupportScreen } from "./AppScreens";
 
 const STEPS = [
-  { icon: Search, title: "Search & Discover", desc: "Browse verified listings filtered by location, budget, and property type. Every listing is inspected before it goes live.", screen: HomeScreen },
-  { icon: MessagesSquare, title: "Connect Directly", desc: "Chat with landlords directly through the app. Ask questions, negotiate terms, and schedule inspections with no agents in between.", screen: ChatThreadScreen },
-  { icon: CalendarCheck, title: "Inspect & Verify", desc: "Take a virtual tour or book a physical inspection in one tap. See the actual property before you commit to anything.", screen: InspectScreen },
-  { icon: CreditCard, title: "Pay Securely", desc: "Make payments through the platform with full protection. Your money is held safely until you confirm move-in.", screen: PayScreen },
-  { icon: KeyRound, title: "Move In", desc: "Get your keys and settle in. Book move-in services like cleaning and logistics right from the app.", screen: MoveInScreen },
-  { icon: ShieldCheck, title: "Stay Protected", desc: "Ongoing support for maintenance, disputes, and renewals. We're with you through the whole tenancy, not just the deal.", screen: SupportScreen },
+  { icon: IcSearchHome, title: "Search & Discover", desc: "Browse verified listings filtered by location, budget, and property type. Every listing is inspected before it goes live.", screen: HomeScreen },
+  { icon: IcChat, title: "Connect Directly", desc: "Chat with landlords directly through the app. Ask questions, negotiate terms, and schedule inspections with no agents in between.", screen: ChatThreadScreen },
+  { icon: IcCalendar, title: "Inspect & Verify", desc: "Take a virtual tour or book a physical inspection in one tap. See the actual property before you commit to anything.", screen: InspectScreen },
+  { icon: IcCard, title: "Pay Securely", desc: "Make payments through the platform with full protection. Your money is held safely until you confirm move-in.", screen: PayScreen },
+  { icon: IcKey, title: "Move In", desc: "Get your keys and settle in. Book move-in services like cleaning and logistics right from the app.", screen: MoveInScreen },
+  { icon: IcShield, title: "Stay Protected", desc: "Ongoing support for maintenance, disputes, and renewals. We're with you through the whole tenancy, not just the deal.", screen: SupportScreen },
 ];
 
 const DURATION = 6000;
@@ -44,17 +44,14 @@ export default function HowItWorksStepper() {
               }}
             >
               <div className="flex items-center gap-4 px-4 sm:px-5 pt-4 pb-4">
-                <span
-                  className="w-11 h-11 rounded-[12px] flex-shrink-0 flex items-center justify-center transition-all duration-300"
-                  style={on ? { background: "var(--gold)", color: "var(--bg)" } : { background: "var(--gold-dim)", color: "var(--gold)" }}
-                >
-                  <Icon size={20} />
+                <span className="flex-shrink-0 inline-flex transition-all duration-300" style={{ color: on ? "var(--gold)" : "var(--dim)", transform: on ? "scale(1.08)" : "none" }}>
+                  <Icon size={32} />
                 </span>
                 <span className="text-[1rem] sm:text-[1.08rem] font-bold transition-colors" style={{ color: on ? "var(--cream)" : "var(--text)" }}>{s.title}</span>
               </div>
               <div className={`mnav ${on ? "open" : ""}`}>
                 <div>
-                  <p className="text-[0.86rem] leading-[1.65] px-4 sm:px-5 pb-5 sm:pl-[5.25rem]" style={{ color: "var(--text-2)" }}>{s.desc}</p>
+                  <p className="text-[0.86rem] leading-[1.65] px-4 sm:px-5 pb-5 sm:pl-[4.5rem]" style={{ color: "var(--text-2)" }}>{s.desc}</p>
                 </div>
               </div>
               {on && (

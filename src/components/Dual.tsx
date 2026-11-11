@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { UserSearch, Building2, Check, ArrowRight, Search } from "lucide-react";
+import { Check, ArrowRight, Search } from "lucide-react";
+import { IcSearchHome, IcBuilding } from "./CribsIcons";
 
 export default function Dual() {
   return (
@@ -9,7 +10,7 @@ export default function Dual() {
         <div className="reveal panel-h p-7 sm:p-10 rounded-[20px] grid sm:grid-cols-[1.15fr_0.85fr] gap-6 items-center" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
           <div>
             <div className="inline-flex items-center gap-[0.4rem] text-[0.62rem] font-bold uppercase tracking-[2px] mb-4 px-[0.7rem] py-[0.3rem] rounded-[6px]" style={{ color: "var(--gold)", background: "var(--gold-dim)" }}>
-              <UserSearch size={13} /> For Tenants
+              <IcSearchHome size={15} /> For Tenants
             </div>
             <h3 className="text-[clamp(1.3rem,2.2vw,1.7rem)] font-extrabold leading-[1.2] tracking-[-0.5px] mb-[0.9rem]" style={{ color: "var(--cream)" }}>Find a place you&apos;ll love.</h3>
             <p className="text-[0.85rem] leading-[1.7] mb-6" style={{ color: "var(--text)" }}>Search verified homes and apartments across Lagos. Connect directly with landlords and move in with ease.</p>
@@ -37,7 +38,7 @@ export default function Dual() {
         <div id="landlords" className="reveal reveal-d1 panel-h p-7 sm:p-10 rounded-[20px] grid sm:grid-cols-[1.15fr_0.85fr] gap-6 items-center" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
           <div>
             <div className="inline-flex items-center gap-[0.4rem] text-[0.62rem] font-bold uppercase tracking-[2px] mb-4 px-[0.7rem] py-[0.3rem] rounded-[6px]" style={{ color: "var(--gold)", background: "var(--gold-dim)" }}>
-              <Building2 size={13} /> For Landlords
+              <IcBuilding size={15} /> For Landlords
             </div>
             <h3 className="text-[clamp(1.3rem,2.2vw,1.7rem)] font-extrabold leading-[1.2] tracking-[-0.5px] mb-[0.9rem]" style={{ color: "var(--cream)" }}>List your property. Find the right tenant.</h3>
             <p className="text-[0.85rem] leading-[1.7] mb-6" style={{ color: "var(--text)" }}>Reach serious tenants looking for quality homes. List your property, manage inquiries and close deals faster.</p>

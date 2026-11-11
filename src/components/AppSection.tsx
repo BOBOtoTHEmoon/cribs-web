@@ -1,11 +1,11 @@
-import { Bell, Heart, Wallet } from "lucide-react";
+import { IcBell, IcHeart, IcWallet } from "./CribsIcons";
 import IPhone from "./IPhone";
 import { MapScreen } from "./AppScreens";
 
 const FEATURES = [
-  { icon: Bell, title: "Instant Notifications", desc: "Get real-time updates on new listings and messages." },
-  { icon: Heart, title: "Save Favorites", desc: "Save properties you love and come back anytime." },
-  { icon: Wallet, title: "Property Management", desc: "Landlords collect rent, draft quick notices, and manage tenants with ease." },
+  { icon: IcBell, title: "Instant Notifications", desc: "Get real-time updates on new listings and messages." },
+  { icon: IcHeart, title: "Save Favorites", desc: "Save properties you love and come back anytime." },
+  { icon: IcWallet, title: "Property Management", desc: "Landlords collect rent, draft quick notices, and manage tenants with ease." },
 ];
 
 function StoreBadge({ store }: { store: "apple" | "google" }) {
@@ -56,7 +56,7 @@ export default function AppSection() {
               const Icon = f.icon;
               return (
                 <div key={f.title} className="group flex gap-[0.9rem] items-start">
-                  <div className="w-10 h-10 rounded-[11px] flex-shrink-0 flex items-center justify-center transition-all duration-300 group-hover:bg-[var(--gold)] group-hover:text-[var(--bg)] group-hover:-rotate-6" style={{ background: "var(--gold-dim)", color: "var(--gold)" }}><Icon size={18} /></div>
+                  <span className="ic flex-shrink-0 transition-transform duration-300 group-hover:-translate-y-[2px]"><Icon size={30} /></span>
                   <div>
                     <div className="text-[0.85rem] font-bold mb-[0.2rem]" style={{ color: "var(--cream)" }}>{f.title}</div>
                     <div className="text-[0.76rem] leading-[1.5]" style={{ color: "var(--text)" }}>{f.desc}</div>

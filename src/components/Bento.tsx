@@ -1,8 +1,7 @@
-import type { LucideIcon } from "lucide-react";
 import { Search, MapPin, Play, ImagePlus, BadgeCheck, Building2 } from "lucide-react";
 
 export type BentoItem = {
-  icon: LucideIcon;
+  icon: React.ComponentType<{ size?: number }>;
   title: string;
   desc: string;
   visual?: React.ReactNode; // items with a visual become wide cards
@@ -22,9 +21,7 @@ export default function Bento({ items }: { items: BentoItem[] }) {
             style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}
           >
             <div className={`p-5 sm:p-7 flex flex-col ${wide ? "sm:w-[46%] sm:justify-center" : ""}`}>
-              <div className="ic w-11 h-11 rounded-[12px] flex items-center justify-center mb-4" style={{ background: "var(--gold-dim)", color: "var(--gold)" }}>
-                <Icon size={21} />
-              </div>
+              <span className="ic mb-4"><Icon size={34} /></span>
               <div className={`${wide ? "text-[1.05rem] sm:text-[1.2rem]" : "text-[0.92rem] sm:text-[1rem]"} font-bold mb-2 leading-snug`} style={{ color: "var(--cream)" }}>{it.title}</div>
               <div className="text-[0.78rem] sm:text-[0.84rem] leading-[1.6]" style={{ color: "var(--text)" }}>{it.desc}</div>
             </div>

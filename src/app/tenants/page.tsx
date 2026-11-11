@@ -4,15 +4,16 @@ import PageShell from "@/components/PageShell";
 import Bento, { SearchVisual, TourVisual } from "@/components/Bento";
 import type { BentoItem } from "@/components/Bento";
 import PageHero from "@/components/PageHero";
-import { Search, Heart, MessagesSquare, ShieldCheck, Wallet, MapPin, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { IcSearchHome, IcHomeCheck, IcChat, IcHeart, IcWallet, IcTour } from "@/components/CribsIcons";
 
 const BENEFITS: BentoItem[] = [
-  { icon: Search, title: "Smart Search", desc: "Filter by location, price, bedrooms, and amenities to find exactly what you need.", visual: <SearchVisual /> },
-  { icon: ShieldCheck, title: "Verified Listings", desc: "Every property is inspected by our team. No fake photos, no scams." },
-  { icon: MessagesSquare, title: "Talk to Landlords", desc: "Message property owners directly. No agents adding fees or confusion." },
-  { icon: Heart, title: "Save Favorites", desc: "Bookmark homes you love and compare them side by side anytime." },
-  { icon: Wallet, title: "No Hidden Fees", desc: "Transparent pricing from the start. What you see is what you pay." },
-  { icon: MapPin, title: "Virtual Tours", desc: "Inspect properties remotely before you ever leave your house. Walk through every room from your phone.", visual: <TourVisual /> },
+  { icon: IcSearchHome, title: "Smart Search", desc: "Filter by location, price, bedrooms, and amenities to find exactly what you need.", visual: <SearchVisual /> },
+  { icon: IcHomeCheck, title: "Verified Listings", desc: "Every property is inspected by our team. No fake photos, no scams." },
+  { icon: IcChat, title: "Talk to Landlords", desc: "Message property owners directly. No agents adding fees or confusion." },
+  { icon: IcHeart, title: "Save Favorites", desc: "Bookmark homes you love and compare them side by side anytime." },
+  { icon: IcWallet, title: "No Hidden Fees", desc: "Transparent pricing from the start. What you see is what you pay." },
+  { icon: IcTour, title: "Virtual Tours", desc: "Inspect properties remotely before you ever leave your house. Walk through every room from your phone.", visual: <TourVisual /> },
 ];
 
 export const metadata = pageMeta({
