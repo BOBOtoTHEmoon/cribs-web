@@ -7,7 +7,7 @@ const EXPLORE = [
   { label: "For Landlords", href: "/landlords" },
   { label: "About Us", href: "/about" },
   { label: "Blog", href: "/blog" },
-  { label: "Join Waitlist", href: "/#download" },
+  { label: "Get the App", href: "/#download" },
 ];
 
 const SUPPORT = [
