@@ -57,7 +57,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
           <Link href="/#download" className="btn-gold hidden sm:inline-flex !px-[1.4rem] !py-[0.6rem] !text-[0.85rem] !rounded-[9px]">
-            <Smartphone size={16} /> Get the App
+            <Smartphone size={16} /> Join Waitlist
           </Link>
           <button
             type="button"
@@ -94,7 +94,7 @@ export default function Navbar() {
               ))}
             </div>
             <Link href="/#download" onClick={close} className="btn-gold w-full mt-3">
-              <Smartphone size={16} /> Get the App
+              <Smartphone size={16} /> Join the Waitlist
             </Link>
           </div>
         </div>

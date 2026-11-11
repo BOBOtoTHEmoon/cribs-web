@@ -1,5 +1,6 @@
 import { IcBell, IcHeart, IcWallet } from "./CribsIcons";
 import IPhone from "./IPhone";
+import WaitlistForm from "./WaitlistForm";
 import { MapScreen } from "./AppScreens";
 
 const FEATURES = [
@@ -41,10 +42,11 @@ export default function AppSection() {
 
           {/* text */}
           <div className="relative z-[2] text-center lg:text-left">
-            <div className="text-[0.65rem] font-bold uppercase tracking-[2.5px] mb-4" style={{ color: "var(--gold)" }}>Launching Soon</div>
+            <div className="text-[0.65rem] font-bold uppercase tracking-[2.5px] mb-4" style={{ color: "var(--gold)" }}>Join the Waitlist</div>
             <h2 className="text-[clamp(1.6rem,3vw,2.2rem)] font-extrabold leading-[1.2] tracking-[-0.5px] mb-4" style={{ color: "var(--cream)" }}>Everything you need, right in your pocket.</h2>
-            <p className="text-[0.9rem] leading-[1.7] mb-7 max-w-[340px] mx-auto lg:mx-0" style={{ color: "var(--text-2)" }}>The Cribs app is coming soon to iOS and Android. Search, chat, and manage your rentals anytime, anywhere.</p>
-            <div className="flex gap-3 justify-center lg:justify-start">
+            <p className="text-[0.9rem] leading-[1.7] mb-6 max-w-[360px] mx-auto lg:mx-0" style={{ color: "var(--text-2)" }}>The Cribs app is coming soon to iOS and Android. Join the waitlist and be the first to know when it&apos;s live.</p>
+            <WaitlistForm />
+            <div className="flex gap-3 justify-center lg:justify-start mt-3">
               <StoreBadge store="apple" />
               <StoreBadge store="google" />
             </div>
