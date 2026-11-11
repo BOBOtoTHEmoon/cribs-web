@@ -1,4 +1,11 @@
+import { pageMeta } from "@/lib/seo";
 import SimplePage, { Block } from "@/components/SimplePage";
+
+export const metadata = pageMeta({
+  title: "Privacy Policy",
+  description: "How Cribs collects, uses and protects your personal information.",
+  path: "/privacy",
+});
 
 export default function Privacy() {
   return (
@@ -13,10 +20,10 @@ export default function Privacy() {
         We use industry-standard security measures to protect your data. Your conversations and personal details are never sold.
       </Block>
       <Block heading="Your Rights">
-        You can access, update, or request deletion of your personal data at any time by contacting support@cribs.ng.
+        You can access, update, or request deletion of your personal data at any time by contacting support@cribshq.app.
       </Block>
       <Block heading="Contact">
-        Questions about privacy? Email privacy@cribs.ng.
+        Questions about privacy? Email privacy@cribshq.app.
       </Block>
     </SimplePage>
   );

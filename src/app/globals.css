@@ -18,6 +18,7 @@
   --text: #97948B;
   --text-2: #B5B2A9;
   --dim: #55534B;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -30,6 +31,7 @@ html {
   scroll-behavior: smooth;
   overflow-x: clip;
   max-width: 100vw;
+  background: var(--bg);
 }
 
 body {
@@ -39,6 +41,11 @@ body {
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
   overflow-x: hidden;
+  /* Built-in scale: 85% on mobile, 80% on desktop */
+  zoom: 0.85;
+}
+@media (min-width: 768px) {
+  body { zoom: 0.8; }
 }
 
 a {
@@ -46,21 +53,105 @@ a {
   text-decoration: none;
 }
 
-/* Reveal animation */
+/* Keep form fields at 16px on phones so iOS does not zoom in */
+input, select, textarea { font-size: max(16px, 1em); }
+
+.font-anton { font-family: var(--font-anton), Impact, sans-serif; font-weight: 400; }
+
+/* ---------- Reveal animation ---------- */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease),
+    border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.35s ease;
 }
-.reveal.vis {
-  opacity: 1;
-  transform: none;
-}
+.reveal.vis { opacity: 1; transform: none; }
 .reveal-d1 { transition-delay: 0.08s; }
 .reveal-d2 { transition-delay: 0.16s; }
 .reveal-d3 { transition-delay: 0.24s; }
+.reveal.done { transition-delay: 0s; }
+
+@layer components {
+/* ---------- Hover: cards ---------- */
+.card-h {
+  transition: opacity 0.7s var(--ease), transform 0.45s var(--ease),
+    border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.35s ease;
+}
+.card-h:hover {
+  transform: translateY(-6px);
+  border-color: rgba(200, 168, 78, 0.35) !important;
+  background-color: var(--card-2) !important;
+  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.8);
+}
+.card-h .ic { transition: transform 0.45s var(--ease), background-color 0.3s ease, color 0.3s ease; }
+.card-h:hover .ic { transform: scale(1.08) rotate(-6deg); background: var(--gold) !important; color: var(--bg) !important; }
+
+/* soft hover for big panels */
+.panel-h { transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), border-color 0.3s ease; }
+.panel-h:hover { border-color: rgba(200, 168, 78, 0.28) !important; }
+
+/* ---------- Hover: buttons ---------- */
+.btn-gold, .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.3s var(--ease), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.3s ease;
+  padding: 0.95rem 1.9rem;
+  font-size: 0.92rem;
+}
+.btn-gold { background: var(--gold); color: var(--bg); border: 0; box-shadow: 0 8px 30px rgba(200, 168, 78, 0.15); }
+.btn-gold:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(200, 168, 78, 0.28); }
+.btn-ghost { background: var(--card); color: var(--cream); border: 1px solid var(--card-border); font-weight: 600; }
+.btn-ghost:hover { border-color: rgba(200, 168, 78, 0.45); transform: translateY(-2px); }
+.btn-gold svg, .btn-ghost svg { transition: transform 0.3s var(--ease); }
+.btn-gold:hover svg, .btn-ghost:hover svg { transform: translateX(2px); }
+@media (max-width: 639px) {
+  .btn-gold, .btn-ghost { padding: 0.85rem 1.3rem; font-size: 0.85rem; }
+}
+
+/* ---------- Hover: links ---------- */
+.lnk { color: var(--text); transition: color 0.2s ease; }
+.lnk:hover { color: var(--cream); }
+.arrow-link { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.85rem; font-weight: 700; color: var(--gold); transition: color 0.2s ease; }
+.arrow-link svg { transition: transform 0.3s var(--ease); }
+.arrow-link:hover { color: var(--gold-hover); }
+.arrow-link:hover svg { transform: translateX(5px); }
+.nav-lnk { position: relative; color: var(--text); transition: color 0.2s ease; }
+.nav-lnk::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; border-radius: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.35s var(--ease); }
+.nav-lnk:hover, .nav-lnk.on { color: var(--cream); }
+.nav-lnk:hover::after, .nav-lnk.on::after { transform: scaleX(1); }
+
+}
+
+/* ---------- Animated hero background (skyline) ---------- */
+.hero-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.sky-far { animation: skyDrift 46s ease-in-out infinite alternate; }
+.sky-win { opacity: 0.05; animation-name: winFlicker; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+@keyframes skyDrift { from { transform: translateX(0); } to { transform: translateX(-60px); } }
+@keyframes winFlicker { 0%, 100% { opacity: 0.05; } 35%, 75% { opacity: 0.8; } }
+
+/* ---------- Floating phones ---------- */
+.float-slow { animation: floatY 7s ease-in-out infinite; }
+.float-slower { animation: floatY 9s ease-in-out infinite; animation-delay: -3s; }
+@keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+/* ---------- Mobile menu ---------- */
+.mnav { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s var(--ease); }
+.mnav.open { grid-template-rows: 1fr; }
+.mnav > div { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  .sky-far, .sky-win, .float-slow, .float-slower { animation: none; }
 }
+
+/* ---------- How it works stepper ---------- */
+.step-item { transition: background-color 0.3s ease, border-color 0.3s ease; }
+.step-item:hover { background-color: var(--card) !important; }
+.step-progress { width: 0; animation-name: stepFill; animation-timing-function: linear; animation-fill-mode: forwards; }
+@keyframes stepFill { from { width: 0; } to { width: 100%; } }

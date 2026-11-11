@@ -1,3 +1,4 @@
+import { pageMeta } from "@/lib/seo";
 import PageShell from "@/components/PageShell";
 import PageHero from "@/components/PageHero";
 import { Target, Eye, Heart } from "lucide-react";
@@ -7,6 +8,12 @@ const VALUES = [
   { icon: Eye, title: "Our Vision", desc: "A future where anyone can find a home or list a property with total confidence, backed by verification, technology, and trust at every step." },
   { icon: Heart, title: "Our Values", desc: "Honesty over hustle. Transparency over shortcuts. People over profit. We build for the renter and the landlord, not the agent taking a cut." },
 ];
+
+export const metadata = pageMeta({
+  title: "About Us",
+  description: "Cribs is fixing how Nigeria rents: verified listings, real landlords and no middlemen. Learn about our mission, vision and values.",
+  path: "/about",
+});
 
 export default function About() {
   return (
@@ -18,14 +25,14 @@ export default function About() {
         </div>
       </section>
       <section className="max-w-[1200px] mx-auto px-5 sm:px-10 pb-[clamp(4rem,10vh,7rem)]">
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
           {VALUES.map((v, i) => {
             const Icon = v.icon;
             return (
-              <div key={v.title} className={`reveal ${i === 1 ? "reveal-d1" : i === 2 ? "reveal-d2" : ""} p-8 rounded-[16px]`} style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
-                <div className="w-[52px] h-[52px] rounded-[13px] flex items-center justify-center mb-5" style={{ background: "var(--gold-dim)", color: "var(--gold)" }}><Icon size={24} /></div>
+              <div key={v.title} className={`reveal card-h ${i === 1 ? "reveal-d1" : i === 2 ? "reveal-d2 col-span-2 md:col-span-1" : ""} p-5 sm:p-8 rounded-[16px]`} style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+                <div className="ic w-11 h-11 sm:w-[52px] sm:h-[52px] rounded-[13px] flex items-center justify-center mb-4 sm:mb-5" style={{ background: "var(--gold-dim)", color: "var(--gold)" }}><Icon size={24} /></div>
                 <div className="text-[1.05rem] font-bold mb-2" style={{ color: "var(--cream)" }}>{v.title}</div>
-                <div className="text-[0.85rem] leading-[1.65]" style={{ color: "var(--text)" }}>{v.desc}</div>
+                <div className="text-[0.78rem] sm:text-[0.85rem] leading-[1.6]" style={{ color: "var(--text)" }}>{v.desc}</div>
               </div>
             );
           })}

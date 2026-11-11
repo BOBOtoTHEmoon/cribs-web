@@ -1,4 +1,11 @@
+import { pageMeta } from "@/lib/seo";
 import SimplePage, { Block } from "@/components/SimplePage";
+
+export const metadata = pageMeta({
+  title: "Terms of Use",
+  description: "The rules and guidelines for using the Cribs platform.",
+  path: "/terms",
+});
 
 export default function Terms() {
   return (

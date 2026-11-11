@@ -1,4 +1,11 @@
+import { pageMeta } from "@/lib/seo";
 import SimplePage, { Block } from "@/components/SimplePage";
+
+export const metadata = pageMeta({
+  title: "Safety Tips",
+  description: "How to rent safely on Cribs: pay through the platform, inspect before you commit and report anything suspicious.",
+  path: "/safety",
+});
 
 export default function Safety() {
   return (
@@ -16,7 +23,7 @@ export default function Safety() {
         Be cautious of deals that seem too good to be true, requests for large upfront cash payments, or landlords who refuse inspections.
       </Block>
       <Block heading="Report anything suspicious">
-        If a listing or user seems off, report it in the app or email support@cribs.ng.
+        If a listing or user seems off, report it in the app or email support@cribshq.app.
       </Block>
     </SimplePage>
   );

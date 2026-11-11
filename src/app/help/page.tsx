@@ -1,4 +1,11 @@
+import { pageMeta } from "@/lib/seo";
 import SimplePage, { Block } from "@/components/SimplePage";
+
+export const metadata = pageMeta({
+  title: "Help Center",
+  description: "Answers to the most common questions from tenants and landlords using Cribs.",
+  path: "/help",
+});
 
 export default function Help() {
   return (
@@ -16,7 +23,7 @@ export default function Help() {
         Head to the For Landlords page and tap List Your Property. It's free and takes under five minutes.
       </Block>
       <Block heading="Still need help?">
-        Reach us anytime at support@cribs.ng and we'll get back to you quickly.
+        Reach us anytime at support@cribshq.app and we'll get back to you quickly.
       </Block>
     </SimplePage>
   );

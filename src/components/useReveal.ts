@@ -7,8 +7,11 @@ export function useReveal() {
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) {
-            e.target.classList.add("vis");
-            obs.unobserve(e.target);
+            const el = e.target;
+            el.classList.add("vis");
+            obs.unobserve(el);
+            // drop the stagger delay once revealed so hover effects respond instantly
+            window.setTimeout(() => el.classList.add("done"), 1000);
           }
         });
       },

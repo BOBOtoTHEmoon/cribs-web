@@ -1,4 +1,4 @@
-import { Sparkles, Users, SearchCheck, ShieldCheck, MessageCircle } from "lucide-react";
+import { Users, SearchCheck, ShieldCheck, MessageCircle } from "lucide-react";
 
 const CARDS = [
   { icon: Users, title: "Direct Connection", desc: "Tenants and landlords connect directly. No agents, no extra fees.", d: "" },
@@ -23,16 +23,16 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {CARDS.map((c) => {
             const Icon = c.icon;
             return (
-              <div key={c.title} className={`reveal ${c.d} group p-9 px-6 rounded-[16px] transition-all relative overflow-hidden`} style={{ background: "var(--card)", border: "1px solid var(--card-border)" }} onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--card-border-hover)"; e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.background = "var(--card-2)"; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--card-border)"; e.currentTarget.style.transform = "none"; e.currentTarget.style.background = "var(--card)"; }}>
-                <div className="w-[52px] h-[52px] rounded-[13px] flex items-center justify-center mb-5" style={{ background: "var(--gold-dim)", color: "var(--gold)" }}>
+              <div key={c.title} className={`reveal card-h ${c.d} p-5 sm:p-9 sm:px-6 rounded-[16px] relative overflow-hidden`} style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+                <div className="ic w-11 h-11 sm:w-[52px] sm:h-[52px] rounded-[13px] flex items-center justify-center mb-4 sm:mb-5" style={{ background: "var(--gold-dim)", color: "var(--gold)" }}>
                   <Icon size={24} />
                 </div>
-                <div className="text-[0.95rem] font-bold mb-2" style={{ color: "var(--cream)" }}>{c.title}</div>
-                <div className="text-[0.82rem] leading-[1.6]" style={{ color: "var(--text)" }}>{c.desc}</div>
+                <div className="text-[0.9rem] sm:text-[0.95rem] font-bold mb-2 leading-snug" style={{ color: "var(--cream)" }}>{c.title}</div>
+                <div className="text-[0.78rem] sm:text-[0.82rem] leading-[1.6]" style={{ color: "var(--text)" }}>{c.desc}</div>
               </div>
             );
           })}

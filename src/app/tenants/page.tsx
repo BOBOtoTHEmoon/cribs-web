@@ -1,40 +1,38 @@
+import Link from "next/link";
+import { pageMeta } from "@/lib/seo";
 import PageShell from "@/components/PageShell";
+import Bento, { SearchVisual, TourVisual } from "@/components/Bento";
+import type { BentoItem } from "@/components/Bento";
 import PageHero from "@/components/PageHero";
 import { Search, Heart, MessagesSquare, ShieldCheck, Wallet, MapPin, ArrowRight } from "lucide-react";
 
-const BENEFITS = [
-  { icon: Search, title: "Smart Search", desc: "Filter by location, price, bedrooms, and amenities to find exactly what you need." },
+const BENEFITS: BentoItem[] = [
+  { icon: Search, title: "Smart Search", desc: "Filter by location, price, bedrooms, and amenities to find exactly what you need.", visual: <SearchVisual /> },
   { icon: ShieldCheck, title: "Verified Listings", desc: "Every property is inspected by our team. No fake photos, no scams." },
   { icon: MessagesSquare, title: "Talk to Landlords", desc: "Message property owners directly. No agents adding fees or confusion." },
   { icon: Heart, title: "Save Favorites", desc: "Bookmark homes you love and compare them side by side anytime." },
   { icon: Wallet, title: "No Hidden Fees", desc: "Transparent pricing from the start. What you see is what you pay." },
-  { icon: MapPin, title: "Virtual Tours", desc: "Inspect properties remotely before you ever leave your house." },
+  { icon: MapPin, title: "Virtual Tours", desc: "Inspect properties remotely before you ever leave your house. Walk through every room from your phone.", visual: <TourVisual /> },
 ];
+
+export const metadata = pageMeta({
+  title: "For Tenants",
+  description: "Find verified homes in Lagos and talk directly to landlords. No fake listings, no agent fees, no stress.",
+  path: "/tenants",
+});
 
 export default function Tenants() {
   return (
     <PageShell>
       <PageHero eyebrow="For Tenants" title="Find a place you'll actually love" desc="Stop wasting weekends on fake listings and unreliable agents. Cribs gives you verified homes and direct access to landlords." />
       <section className="max-w-[1200px] mx-auto px-5 sm:px-10 pb-[clamp(3rem,7vh,5rem)]">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {BENEFITS.map((b, i) => {
-            const Icon = b.icon;
-            return (
-              <div key={b.title} className={`reveal ${i % 3 === 1 ? "reveal-d1" : i % 3 === 2 ? "reveal-d2" : ""} p-8 rounded-[16px]`} style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
-                <div className="w-[52px] h-[52px] rounded-[13px] flex items-center justify-center mb-5" style={{ background: "var(--gold-dim)", color: "var(--gold)" }}><Icon size={24} /></div>
-                <div className="text-[1.05rem] font-bold mb-2" style={{ color: "var(--cream)" }}>{b.title}</div>
-                <div className="text-[0.85rem] leading-[1.65]" style={{ color: "var(--text)" }}>{b.desc}</div>
-              </div>
-            );
-          })}
-        </div>
+        <Bento items={BENEFITS} />
       </section>
       <section className="max-w-[1200px] mx-auto px-5 sm:px-10 pb-[clamp(4rem,10vh,7rem)]">
-        <div className="reveal rounded-[20px] p-[clamp(2.5rem,5vw,4rem)] text-center relative overflow-hidden" style={{ background: "linear-gradient(160deg, var(--card-2), var(--card))", border: "1px solid var(--card-border)" }}>
-          <div className="absolute top-[-40%] left-1/2 -translate-x-1/2 w-[400px] h-[400px] pointer-events-none" style={{ background: "radial-gradient(circle, var(--gold-glow), transparent 70%)" }} />
+        <div className="reveal rounded-[20px] p-[clamp(2.5rem,5vw,4rem)] text-center relative overflow-hidden panel-h" style={{ background: "linear-gradient(160deg, var(--card-2), var(--card))", border: "1px solid var(--card-border)" }}>
           <h2 className="relative text-[clamp(1.6rem,3vw,2.4rem)] font-extrabold mb-4" style={{ color: "var(--cream)" }}>Ready to find your next home?</h2>
-          <p className="relative text-[0.95rem] mb-7 max-w-[420px] mx-auto" style={{ color: "var(--text-2)" }}>Join thousands of tenants who found their perfect place on Cribs.</p>
-          <button className="relative inline-flex items-center gap-2 px-[1.9rem] py-[0.95rem] rounded-[11px] text-[0.92rem] font-bold border-0 cursor-pointer" style={{ background: "var(--gold)", color: "var(--bg)" }}>Start Searching <ArrowRight size={18} /></button>
+          <p className="relative text-[0.95rem] mb-7 max-w-[420px] mx-auto" style={{ color: "var(--text-2)" }}>Be among the first to find your next home on Cribs. The app is launching soon.</p>
+          <Link href="/#download" className="btn-gold relative">Get the App <ArrowRight size={18} /></Link>
         </div>
       </section>
     </PageShell>
