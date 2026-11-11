@@ -17,6 +17,40 @@ function rateLimited(ip: string) {
   return recent.length > 5;
 }
 
+/* Normalise a WhatsApp number to international format (+234...). Returns
+   "" for an empty field and null when the number looks invalid. */
+function normalisePhone(raw: string): string | null {
+  const trimmed = raw.trim();
+  if (!trimmed) return "";
+  const plus = trimmed.startsWith("+");
+  let digits = trimmed.replace(/\D/g, "");
+  if (plus) {
+    // already international
+  } else if (digits.startsWith("234")) {
+    // 2348012345678
+  } else if (digits.startsWith("0") && digits.length === 11) {
+    digits = "234" + digits.slice(1); // 08012345678
+  } else if (digits.length === 10 && /^[789]/.test(digits)) {
+    digits = "234" + digits; // 8012345678
+  }
+  if (digits.length < 10 || digits.length > 15) return null;
+  if (digits.startsWith("234") && digits.length !== 13) return null;
+  return "+" + digits;
+}
+
+/* Make sure the "whatsapp" contact property exists in Resend (cached) */
+let propertyReady = false;
+async function ensureWhatsappProperty(resend: Resend) {
+  if (propertyReady) return;
+  const list = await resend.contactProperties.list();
+  const exists = list.data?.data.some((p) => p.key === "whatsapp");
+  if (!exists) {
+    const created = await resend.contactProperties.create({ key: "whatsapp", type: "string", fallbackValue: "" });
+    if (created.error) throw new Error(created.error.message);
+  }
+  propertyReady = true;
+}
+
 /* Find or create the Resend segment for this role, cached per instance */
 const segmentCache: Record<string, string> = {};
 async function getSegmentId(resend: Resend, name: string) {
@@ -46,6 +80,11 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
   }
 
+  const whatsapp = normalisePhone(String(body?.whatsapp ?? "").slice(0, 32));
+  if (whatsapp === null) {
+    return NextResponse.json({ error: "Please enter a valid WhatsApp number, or leave it blank." }, { status: 400 });
+  }
+
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   if (rateLimited(ip)) {
     return NextResponse.json({ error: "Too many attempts. Please try again in a few minutes." }, { status: 429 });
@@ -53,9 +92,25 @@ export async function POST(req: Request) {
 
   const resend = new Resend(apiKey);
 
-  // Already on the list?
+  let properties: Record<string, string> | undefined;
+  if (whatsapp) {
+    try {
+      await ensureWhatsappProperty(resend);
+      properties = { whatsapp };
+    } catch (e) {
+      console.error("[waitlist] whatsapp property error", e);
+    }
+  }
+
+  // Already on the list? Save a newly added WhatsApp number, then stop.
   const existing = await resend.contacts.get({ email });
-  if (existing.data) return NextResponse.json({ ok: true, already: true });
+  if (existing.data) {
+    if (properties) {
+      const upd = await resend.contacts.update({ email, properties });
+      if (upd.error) console.error("[waitlist] whatsapp update error", upd.error);
+    }
+    return NextResponse.json({ ok: true, already: true });
+  }
 
   let segmentId: string | undefined;
   try {
@@ -64,10 +119,16 @@ export async function POST(req: Request) {
     console.error("[waitlist] segment error", e);
   }
 
-  let created = await resend.contacts.create({ email, ...(segmentId ? { segments: [{ id: segmentId }] } : {}) });
-  if (created.error && segmentId) {
-    // Fall back to saving the contact without a segment
-    created = await resend.contacts.create({ email });
+  let created = await resend.contacts.create({
+    email,
+    ...(properties ? { properties } : {}),
+    ...(segmentId ? { segments: [{ id: segmentId }] } : {}),
+  });
+  if (created.error && (segmentId || properties)) {
+    console.error("[waitlist] contact create retry", created.error);
+    // Retry with the bare minimum so the signup is never lost
+    created = await resend.contacts.create({ email, ...(properties ? { properties } : {}) });
+    if (created.error && properties) created = await resend.contacts.create({ email });
   }
   if (created.error) {
     console.error("[waitlist] contact error", created.error);

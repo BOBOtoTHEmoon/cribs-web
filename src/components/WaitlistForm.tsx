@@ -1,12 +1,16 @@
 "use client";
 import { useState } from "react";
-import { ArrowRight, Check, Loader2 } from "lucide-react";
+import { ArrowRight, Check, Loader2, Mail, Phone } from "lucide-react";
 
 type Status = "idle" | "loading" | "done" | "already" | "error";
+
+const INPUT = "w-full pl-11 pr-4 py-[0.8rem] rounded-[11px] outline-none transition-colors focus:border-[var(--gold)]";
+const INPUT_STYLE: React.CSSProperties = { background: "var(--card-2)", border: "1px solid var(--card-border)", color: "var(--cream)" };
 
 export default function WaitlistForm({ align = "left" }: { align?: "left" | "center" }) {
   const [role, setRole] = useState<"tenant" | "landlord">("tenant");
   const [email, setEmail] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
   const [company, setCompany] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
@@ -20,7 +24,7 @@ export default function WaitlistForm({ align = "left" }: { align?: "left" | "cen
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, role, company }),
+        body: JSON.stringify({ email, whatsapp, role, company }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
@@ -74,38 +78,59 @@ export default function WaitlistForm({ align = "left" }: { align?: "left" | "cen
         ))}
       </div>
 
-      <div className="flex flex-col sm:flex-row gap-2">
+      <div className="flex flex-col gap-2">
         <label htmlFor="waitlist-email" className="sr-only">Email address</label>
-        <input
-          id="waitlist-email"
-          type="email"
-          inputMode="email"
-          autoComplete="email"
-          required
-          placeholder="Your email address"
-          value={email}
-          onChange={(e) => { setEmail(e.target.value); if (status === "error") setStatus("idle"); }}
-          className="flex-1 min-w-0 px-4 py-[0.8rem] rounded-[11px] outline-none transition-colors focus:border-[var(--gold)]"
-          style={{ background: "var(--card-2)", border: "1px solid var(--card-border)", color: "var(--cream)" }}
-        />
-        {/* honeypot */}
-        <input
-          type="text"
-          name="company"
-          tabIndex={-1}
-          autoComplete="off"
-          value={company}
-          onChange={(e) => setCompany(e.target.value)}
-          aria-hidden="true"
-          className="absolute -left-[9999px] w-px h-px opacity-0"
-        />
-        <button type="submit" disabled={status === "loading"} className="btn-gold !py-[0.8rem] !px-5 disabled:opacity-70">
-          {status === "loading" ? <Loader2 size={18} className="animate-spin" /> : <>Join waitlist <ArrowRight size={17} /></>}
-        </button>
+        <div className="relative">
+          <Mail size={17} className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: "var(--gold)" }} />
+          <input
+            id="waitlist-email"
+            type="email"
+            inputMode="email"
+            autoComplete="email"
+            required
+            placeholder="Your email address"
+            value={email}
+            onChange={(e) => { setEmail(e.target.value); if (status === "error") setStatus("idle"); }}
+            className={INPUT}
+            style={INPUT_STYLE}
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="waitlist-whatsapp" className="sr-only">WhatsApp number (optional)</label>
+          <div className="relative flex-1 min-w-0">
+            <Phone size={17} className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: "var(--gold)" }} />
+            <input
+              id="waitlist-whatsapp"
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
+              placeholder="WhatsApp number (optional)"
+              value={whatsapp}
+              onChange={(e) => { setWhatsapp(e.target.value); if (status === "error") setStatus("idle"); }}
+              className={INPUT}
+              style={INPUT_STYLE}
+            />
+          </div>
+          {/* honeypot */}
+          <input
+            type="text"
+            name="company"
+            tabIndex={-1}
+            autoComplete="off"
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
+            aria-hidden="true"
+            className="absolute -left-[9999px] w-px h-px opacity-0"
+          />
+          <button type="submit" disabled={status === "loading"} className="btn-gold w-full !py-[0.85rem] !px-5 disabled:opacity-70">
+            {status === "loading" ? <Loader2 size={18} className="animate-spin" /> : <>Join waitlist <ArrowRight size={17} /></>}
+          </button>
+        </div>
       </div>
 
-      <div className="min-h-[1.4rem] mt-2 text-[0.78rem]" style={{ color: status === "error" ? "#E07A6A" : "var(--dim)" }} aria-live="polite">
-        {status === "error" ? message : "No spam. We'll only email you about the launch."}
+      <div className="min-h-[1.4rem] mt-2 text-[0.78rem] leading-[1.5]" style={{ color: status === "error" ? "#E07A6A" : "var(--dim)" }} aria-live="polite">
+        {status === "error" ? message : "No spam. We'll only use your email and WhatsApp number for Cribs launch updates."}
       </div>
     </form>
   );
