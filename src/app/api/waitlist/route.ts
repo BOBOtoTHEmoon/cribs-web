@@ -5,7 +5,8 @@ import { waitlistEmail } from "@/lib/waitlistEmail";
 export const runtime = "nodejs";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const SEGMENTS = { tenant: "Cribs Waitlist: Tenants", landlord: "Cribs Waitlist: Landlords" } as const;
+const SEGMENTS = { tenant: "Cribs Waitlist: Tenants", landlord: "Cribs Waitlist: Landlords", agent: "Cribs Waitlist: Agents" } as const;
+type Role = keyof typeof SEGMENTS;
 
 /* Light per-IP rate limit (per server instance): 5 attempts every 10 minutes */
 const hits = new Map<string, number[]>();
@@ -71,7 +72,7 @@ export async function POST(req: Request) {
 
   const body = await req.json().catch(() => null);
   const email = String(body?.email ?? "").trim().toLowerCase();
-  const role: "tenant" | "landlord" = body?.role === "landlord" ? "landlord" : "tenant";
+  const role: Role = body?.role === "landlord" || body?.role === "agent" ? body.role : "tenant";
 
   // Honeypot: real people never fill this hidden field
   if (body?.company) return NextResponse.json({ ok: true });
@@ -81,8 +82,8 @@ export async function POST(req: Request) {
   }
 
   const whatsapp = normalisePhone(String(body?.whatsapp ?? "").slice(0, 32));
-  if (whatsapp === null) {
-    return NextResponse.json({ error: "Please enter a valid WhatsApp number, or leave it blank." }, { status: 400 });
+  if (!whatsapp) {
+    return NextResponse.json({ error: "Please add your WhatsApp number to join." }, { status: 400 });
   }
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
@@ -93,7 +94,7 @@ export async function POST(req: Request) {
   const resend = new Resend(apiKey);
 
   let properties: Record<string, string> | undefined;
-  if (whatsapp) {
+  {
     try {
       await ensureWhatsappProperty(resend);
       properties = { whatsapp };

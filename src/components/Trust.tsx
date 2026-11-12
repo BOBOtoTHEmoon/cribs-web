@@ -3,7 +3,7 @@ import { BadgeCheck, ShieldCheck, MessagesSquare } from "lucide-react";
 const ITEMS = [
   { icon: BadgeCheck, label: "Verified Listings Only", sub: "Every property inspected and verified by our team", d: "" },
   { icon: ShieldCheck, label: "Safe, Secure & Transparent", sub: "Secure payments and verified landlord identities", d: "reveal-d1" },
-  { icon: MessagesSquare, label: "Direct Chat with Landlords", sub: "No agents in the middle, communicate directly", d: "reveal-d2" },
+  { icon: MessagesSquare, label: "Chat with Landlords & Agents", sub: "Talk to verified people, all in one place", d: "reveal-d2" },
 ];
 
 export default function Trust() {

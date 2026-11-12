@@ -17,14 +17,14 @@ const BENEFITS: BentoItem[] = [
 
 export const metadata = pageMeta({
   title: "For Landlords",
-  description: "List your Lagos property for free, reach verified tenants, and manage rent, notices and reminders in one place. No agents taking a cut.",
+  description: "List your Lagos property for free, reach verified tenants, and manage rent, notices and reminders in one place. Work alone or with a verified agent.",
   path: "/landlords",
 });
 
 export default function Landlords() {
   return (
     <PageShell>
-      <PageHero eyebrow="For Landlords" title="Quality tenants, zero stress" desc="List your property, reach verified tenants, and manage everything from one place. No agents taking a cut." />
+      <PageHero eyebrow="For Landlords" title="Quality tenants, zero stress" desc="List your property, reach verified tenants, and manage everything from one place. Work on your own or with a verified agent you trust." />
       <section className="max-w-[1200px] mx-auto px-5 sm:px-10 pb-[clamp(3rem,7vh,5rem)]">
         <Bento items={BENEFITS} />
       </section>

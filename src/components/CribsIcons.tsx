@@ -199,3 +199,62 @@ export const IcGem = (p: P) => (
     <path d="M4 12.5h24M12.5 6l-2.5 6.5L16 27l6-14.5L19.5 6" />
   </Svg>
 );
+
+export const IcSpray = (p: P) => (
+  <Svg {...p}>
+    <rect x="10" y="18.5" width="11" height="9.5" rx="2" {...A} />
+    <rect x="10" y="12" width="11" height="16" rx="2.5" />
+    <path d="M12.5 12V8.5h6V12M12.5 8.5H9V5.5h9.5L21 8M24.5 6h3M24.5 9.5h3.5M24.5 13h3" />
+  </Svg>
+);
+
+export const IcTruck = (p: P) => (
+  <Svg {...p}>
+    <rect x="3" y="8" width="15" height="13.5" rx="1.5" {...A} />
+    <rect x="3" y="8" width="15" height="13.5" rx="1.5" />
+    <path d="M18 12h5.5l4.5 5v4.5H18z" />
+    <circle cx="9" cy="23.5" r="2.6" fill="var(--card)" />
+    <circle cx="22.5" cy="23.5" r="2.6" fill="var(--card)" />
+  </Svg>
+);
+
+export const IcBox = (p: P) => (
+  <Svg {...p}>
+    <path d="M5 10 16 5l11 5-11 5z" {...A} />
+    <path d="M5 10 16 5l11 5v12l-11 5-11-5z" />
+    <path d="M5 10l11 5 11-5M16 15v12M10.5 7.5l11 5" />
+  </Svg>
+);
+
+export const IcSofa = (p: P) => (
+  <Svg {...p}>
+    <path d="M7 15v-4a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v4z" {...A} />
+    <path d="M7 15v-4a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v4" />
+    <rect x="4" y="15" width="24" height="8" rx="2.5" />
+    <path d="M8 23v3M24 23v3M11 15v3.5M21 15v3.5" />
+  </Svg>
+);
+
+export const IcStar = (p: P) => (
+  <Svg {...p}>
+    <path d="m16 4 3.6 7.4 8.1 1.2-5.9 5.7 1.4 8.1L16 22.6l-7.2 3.8 1.4-8.1-5.9-5.7 8.1-1.2z" {...A} />
+    <path d="m16 4 3.6 7.4 8.1 1.2-5.9 5.7 1.4 8.1L16 22.6l-7.2 3.8 1.4-8.1-5.9-5.7 8.1-1.2z" />
+  </Svg>
+);
+
+export const IcDoorOut = (p: P) => (
+  <Svg {...p}>
+    <rect x="5" y="4" width="13" height="24" rx="1.5" {...A} />
+    <rect x="5" y="4" width="13" height="24" rx="1.5" />
+    <path d="M14.5 16.5v.01M21 16h7.5M25.5 13l3 3-3 3" />
+  </Svg>
+);
+
+export const IcBadgeAgent = (p: P) => (
+  <Svg {...p}>
+    <circle cx="16" cy="12" r="5" {...A} />
+    <circle cx="16" cy="12" r="5" />
+    <path d="M7 27c0-5 4-8 9-8s9 3 9 8" />
+    <path d="m21.5 24.5 2 2 4-4.2" strokeWidth={2.1} />
+  </Svg>
+);

@@ -10,22 +10,22 @@ import { IcSearchHome, IcHomeCheck, IcChat, IcHeart, IcWallet, IcTour } from "@/
 const BENEFITS: BentoItem[] = [
   { icon: IcSearchHome, title: "Smart Search", desc: "Filter by location, price, bedrooms, and amenities to find exactly what you need.", visual: <SearchVisual /> },
   { icon: IcHomeCheck, title: "Verified Listings", desc: "Every property is inspected by our team. No fake photos, no scams." },
-  { icon: IcChat, title: "Talk to Landlords", desc: "Message property owners directly. No agents adding fees or confusion." },
+  { icon: IcChat, title: "Landlords & Agents", desc: "Chat with property owners and verified agents in one place. No runarounds." },
   { icon: IcHeart, title: "Save Favorites", desc: "Bookmark homes you love and compare them side by side anytime." },
-  { icon: IcWallet, title: "No Hidden Fees", desc: "Transparent pricing from the start. What you see is what you pay." },
+  { icon: IcWallet, title: "Fees Shown Upfront", desc: "Rent, service charge and agent fees are shown before you inspect. What you see is what you pay." },
   { icon: IcTour, title: "Virtual Tours", desc: "Inspect properties remotely before you ever leave your house. Walk through every room from your phone.", visual: <TourVisual /> },
 ];
 
 export const metadata = pageMeta({
   title: "For Tenants",
-  description: "Find verified homes in Lagos and talk directly to landlords. No fake listings, no agent fees, no stress.",
+  description: "Find verified homes in Lagos, chat with landlords and verified agents, and see every fee upfront. No fake listings, no stress.",
   path: "/tenants",
 });
 
 export default function Tenants() {
   return (
     <PageShell>
-      <PageHero eyebrow="For Tenants" title="Find a place you'll actually love" desc="Stop wasting weekends on fake listings and unreliable agents. Cribs gives you verified homes and direct access to landlords." />
+      <PageHero eyebrow="For Tenants" title="Find a place you'll actually love" desc="Stop wasting weekends on fake listings and surprise fees. Cribs gives you verified homes, verified agents, and every cost upfront." />
       <section className="max-w-[1200px] mx-auto px-5 sm:px-10 pb-[clamp(3rem,7vh,5rem)]">
         <Bento items={BENEFITS} />
       </section>

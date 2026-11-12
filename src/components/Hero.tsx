@@ -31,7 +31,7 @@ export default function Hero() {
               {[
                 { icon: IcHomeCheck, label: "Verified\nListings Only" },
                 { icon: IcShield, label: "Safe, Secure\n& Transparent" },
-                { icon: IcChat, label: "Direct Chat\nwith Landlords" },
+                { icon: IcChat, label: "Landlords &\nVerified Agents" },
               ].map((t) => {
                 const Icon = t.icon;
                 return (

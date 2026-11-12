@@ -1,7 +1,7 @@
 import { IcUsers, IcSearchHome, IcShield, IcChat } from "./CribsIcons";
 
 const CARDS = [
-  { icon: IcUsers, title: "Direct Connection", desc: "Tenants and landlords connect directly. No agents, no extra fees.", d: "" },
+  { icon: IcUsers, title: "Everyone Connected", desc: "Tenants, landlords and verified agents on one platform. Every fee shown upfront.", d: "" },
   { icon: IcSearchHome, title: "Easy Search", desc: "Find the right home in the right location, faster.", d: "reveal-d1" },
   { icon: IcShield, title: "Verified & Trusted", desc: "Every listing is verified for your safety and peace of mind.", d: "reveal-d2" },
   { icon: IcChat, title: "Seamless Communication", desc: "Chat, negotiate and close deals all in one place.", d: "reveal-d3" },

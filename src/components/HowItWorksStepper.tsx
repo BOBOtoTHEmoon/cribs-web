@@ -6,7 +6,7 @@ import { HomeScreen, ChatThreadScreen, InspectScreen, PayScreen, MoveInScreen, S
 
 const STEPS = [
   { icon: IcSearchHome, title: "Search & Discover", desc: "Browse verified listings filtered by location, budget, and property type. Every listing is inspected before it goes live.", screen: HomeScreen },
-  { icon: IcChat, title: "Connect Directly", desc: "Chat with landlords directly through the app. Ask questions, negotiate terms, and schedule inspections with no agents in between.", screen: ChatThreadScreen },
+  { icon: IcChat, title: "Connect & Chat", desc: "Chat with landlords and verified agents through the app. Ask questions, see every fee upfront, and schedule inspections in one place.", screen: ChatThreadScreen },
   { icon: IcCalendar, title: "Inspect & Verify", desc: "Take a virtual tour or book a physical inspection in one tap. See the actual property before you commit to anything.", screen: InspectScreen },
   { icon: IcCard, title: "Pay Securely", desc: "Make payments through the platform with full protection. Your money is held safely until you confirm move-in.", screen: PayScreen },
   { icon: IcKey, title: "Move In", desc: "Get your keys and settle in. Book move-in services like cleaning and logistics right from the app.", screen: MoveInScreen },

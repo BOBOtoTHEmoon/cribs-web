@@ -1,4 +1,4 @@
-import { Search, MapPin, Play, ImagePlus, BadgeCheck, Building2 } from "lucide-react";
+import { Search, MapPin, Play, ImagePlus, BadgeCheck, Building2, Star, MessageCircle } from "lucide-react";
 
 export type BentoItem = {
   icon: React.ComponentType<{ size?: number }>;
@@ -135,6 +135,53 @@ export function RentVisual() {
           <span style={{ color: "var(--text-2)" }}>{amt}</span>
         </div>
       ))}
+    </div>
+  );
+}
+
+export function AgentVisual() {
+  return (
+    <div className="rounded-[14px] p-4" style={panel}>
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-11 h-11 rounded-full flex items-center justify-center text-[0.8rem] font-bold" style={{ background: "var(--gold-dim)", color: "var(--gold)" }}>TA</div>
+        <div className="min-w-0">
+          <div className="text-[0.85rem] font-bold flex items-center gap-1" style={{ color: "var(--cream)" }}>Tunde Adebayo <BadgeCheck size={15} style={{ color: "var(--gold)" }} /></div>
+          <div className="text-[0.7rem]" style={{ color: "var(--gold)" }}>Verified Agent, Lekki and Ikoyi</div>
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-2 mb-3">
+        {[["12", "Listings"], ["4.9", "Rating"], ["38", "Reviews"]].map(([n, l]) => (
+          <div key={l} className="rounded-[10px] py-2 text-center" style={{ background: "var(--card-2)" }}>
+            <div className="text-[0.95rem] font-extrabold flex items-center justify-center gap-1" style={{ color: "var(--cream)" }}>{l === "Rating" && <Star size={12} fill="currentColor" style={{ color: "var(--gold)" }} />}{n}</div>
+            <div className="text-[0.62rem]" style={{ color: "var(--dim)" }}>{l}</div>
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center gap-2 rounded-[10px] px-3 py-[0.55rem] text-[0.72rem]" style={{ background: "var(--card-2)", color: "var(--text-2)" }}>
+        <MessageCircle size={14} style={{ color: "var(--gold)" }} /> 3 new tenant inquiries today
+      </div>
+    </div>
+  );
+}
+
+export function FeeVisual() {
+  const rows = [["Annual rent", "₦1,200,000"], ["Service charge", "Included"], ["Agent fee", "₦120,000"]];
+  return (
+    <div className="rounded-[14px] p-4" style={panel}>
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-[0.78rem] font-bold" style={{ color: "var(--cream)" }}>3 Bedroom Apartment, Lekki</span>
+        <span className="text-[0.66rem] font-semibold flex items-center gap-1" style={{ color: "var(--gold)" }}><BadgeCheck size={13} /> Shown upfront</span>
+      </div>
+      {rows.map(([a, b]) => (
+        <div key={a} className="flex justify-between py-[0.5rem] text-[0.74rem]" style={{ borderTop: "1px solid var(--card-border)" }}>
+          <span style={{ color: "var(--text)" }}>{a}</span>
+          <span className="font-semibold" style={{ color: a === "Agent fee" ? "var(--gold)" : "var(--cream)" }}>{b}</span>
+        </div>
+      ))}
+      <div className="flex justify-between pt-[0.6rem] text-[0.82rem] font-bold" style={{ borderTop: "1px solid var(--card-border-hover)", color: "var(--cream)" }}>
+        <span>Total before you inspect</span>
+        <span>₦1,320,000</span>
+      </div>
     </div>
   );
 }

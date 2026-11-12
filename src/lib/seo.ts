@@ -5,7 +5,7 @@ export const SITE = {
   url: "https://www.cribshq.app",
   title: "Cribs | The smarter way to rent in Lagos",
   description:
-    "Cribs connects tenants and landlords directly. Verified homes in Lagos, direct chat with landlords, and no agent fees.",
+    "Cribs connects tenants, landlords and verified agents in Lagos. Verified homes, transparent fees shown upfront, plus cleaning and moving services.",
   ogImage: "/og.jpg",
 };
 

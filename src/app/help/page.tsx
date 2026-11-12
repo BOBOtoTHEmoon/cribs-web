@@ -13,8 +13,8 @@ export default function Help() {
       <Block heading="How do I know a listing is real?">
         Every property on Cribs is inspected and verified by our team before it goes live. Look for the verified badge on each listing.
       </Block>
-      <Block heading="Are there any agent fees?">
-        No. Cribs connects you directly with landlords, so there are no agent or middleman fees, ever.
+      <Block heading="Are there agent fees?">
+        Some properties are listed by verified agents and some directly by landlords. Where an agent fee applies, it is shown clearly on the listing before you inspect, so there are never any surprises.
       </Block>
       <Block heading="How do payments work?">
         Payments are made securely through the platform and held safely until you confirm move-in, protecting both tenants and landlords.

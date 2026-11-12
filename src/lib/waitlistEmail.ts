@@ -2,17 +2,24 @@ import { SITE } from "./seo";
 
 const GOLD = "#C8A84E";
 
-export function waitlistEmail(role: "tenant" | "landlord") {
-  const isLandlord = role === "landlord";
+export function waitlistEmail(role: "tenant" | "landlord" | "agent") {
   const subject = "You're on the Cribs waitlist";
 
-  const lead = isLandlord
-    ? "Thanks for joining as a landlord. When Cribs launches, you'll be among the first to list your property for free and reach verified tenants directly, with no agents taking a cut."
-    : "Thanks for joining. When Cribs launches, you'll be among the first to find verified homes in Lagos and talk directly to landlords, with no agent fees.";
-
-  const perks = isLandlord
-    ? ["Free listing for early landlords", "Verified, serious tenants only", "Rent collection and reminders built in"]
-    : ["Early access before the public launch", "Verified listings only, no fake photos", "Direct chat with landlords, no agent fees"];
+  const COPY = {
+    tenant: {
+      lead: "Thanks for joining. When Cribs launches, you'll be among the first to find verified homes in Lagos, chat with landlords and verified agents, and see every fee upfront.",
+      perks: ["Early access before the public launch", "Verified listings only, no fake photos", "Transparent fees, shown before you inspect"],
+    },
+    landlord: {
+      lead: "Thanks for joining as a landlord. When Cribs launches, you'll be among the first to list your property for free and reach verified, serious tenants.",
+      perks: ["Free listing for early landlords", "Verified, serious tenants only", "Rent collection and reminders built in"],
+    },
+    agent: {
+      lead: "Thanks for joining as an agent. When Cribs launches, you'll be among the first to list the properties you manage, get a verified agent badge, and connect with serious tenants.",
+      perks: ["Verified agent badge on your profile", "Serious tenant leads, straight to you", "Your fee shown upfront, so tenants trust it"],
+    },
+  } as const;
+  const { lead, perks } = COPY[role];
 
   const html = `<!doctype html>
 <html lang="en">

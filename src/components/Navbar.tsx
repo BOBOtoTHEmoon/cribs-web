@@ -9,6 +9,8 @@ const LINKS = [
   { label: "How it works", href: "/how-it-works" },
   { label: "For Tenants", href: "/tenants" },
   { label: "For Landlords", href: "/landlords" },
+  { label: "For Agents", href: "/agents" },
+  { label: "Services", href: "/services" },
   { label: "About Us", href: "/about" },
 ];
 
@@ -47,7 +49,7 @@ export default function Navbar() {
       <div className="max-w-[1200px] mx-auto px-5 sm:px-10 h-[68px] flex items-center justify-between">
         <Logo onClick={close} />
 
-        <div className="hidden md:flex gap-9">
+        <div className="hidden lg:flex gap-8">
           {LINKS.map((l) => (
             <Link key={l.href} href={l.href} className={`nav-lnk text-[0.85rem] font-medium ${pathname === l.href ? "on" : ""}`}>
               {l.label}
@@ -64,7 +66,7 @@ export default function Navbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
-            className="md:hidden w-[42px] h-[42px] rounded-[10px] flex items-center justify-center transition-colors"
+            className="lg:hidden w-[42px] h-[42px] rounded-[10px] flex items-center justify-center transition-colors"
             style={{ background: "var(--card)", border: "1px solid var(--card-border)", color: "var(--cream)" }}
           >
             {open ? <X size={20} /> : <Menu size={20} />}
@@ -73,7 +75,7 @@ export default function Navbar() {
       </div>
 
       {/* mobile menu */}
-      <div className={`mnav md:hidden ${open ? "open" : ""}`}>
+      <div className={`mnav lg:hidden ${open ? "open" : ""}`}>
         <div>
           <div className="px-5 pt-2 pb-6">
             <div className="grid grid-cols-2 gap-2">

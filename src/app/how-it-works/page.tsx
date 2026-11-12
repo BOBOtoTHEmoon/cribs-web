@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { pageMeta } from "@/lib/seo";
 import PageShell from "@/components/PageShell";
 import PageHero from "@/components/PageHero";
@@ -12,9 +14,12 @@ export const metadata = pageMeta({
 export default function HowItWorks() {
   return (
     <PageShell>
-      <PageHero eyebrow="How It Works" title="Renting made simple, from search to move-in" desc="Cribs removes the friction, the middlemen, and the guesswork. Here's how it works from start to finish." />
+      <PageHero eyebrow="How It Works" title="Renting made simple, from search to move-in" desc="Cribs removes the friction, the surprise fees, and the guesswork. Here's how it works from start to finish." />
       <section className="max-w-[1100px] mx-auto px-5 sm:px-10 pb-[clamp(4rem,10vh,7rem)]">
         <HowItWorksStepper />
+        <div className="reveal mt-12 text-center">
+          <Link href="/services" className="arrow-link !text-[0.95rem]">Need help moving in? See our cleaning and moving services <ArrowRight size={17} /></Link>
+        </div>
       </section>
     </PageShell>
   );

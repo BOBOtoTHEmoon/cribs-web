@@ -4,14 +4,14 @@ import PageHero from "@/components/PageHero";
 import { IcFlag, IcHorizon, IcGem } from "@/components/CribsIcons";
 
 const VALUES = [
-  { icon: IcFlag, title: "Our Mission", desc: "To make renting in Nigeria transparent, safe, and stress-free by connecting tenants and landlords directly, cutting out the middlemen who make housing harder than it should be." },
+  { icon: IcFlag, title: "Our Mission", desc: "To make renting in Nigeria transparent, safe, and stress-free by connecting tenants, landlords and trusted agents on one honest platform where every fee is clear." },
   { icon: IcHorizon, title: "Our Vision", desc: "A future where anyone can find a home or list a property with total confidence, backed by verification, technology, and trust at every step." },
-  { icon: IcGem, title: "Our Values", desc: "Honesty over hustle. Transparency over shortcuts. People over profit. We build for the renter and the landlord, not the agent taking a cut." },
+  { icon: IcGem, title: "Our Values", desc: "Honesty over hustle. Transparency over shortcuts. People over profit. We build for renters, landlords and the honest agents who serve them." },
 ];
 
 export const metadata = pageMeta({
   title: "About Us",
-  description: "Cribs is fixing how Nigeria rents: verified listings, real landlords and no middlemen. Learn about our mission, vision and values.",
+  description: "Cribs is fixing how Nigeria rents: verified listings, real landlords, trusted agents and transparent fees. Learn about our mission, vision and values.",
   path: "/about",
 });
 
@@ -21,7 +21,7 @@ export default function About() {
       <PageHero eyebrow="About Us" title="We're fixing how Nigeria rents" desc="Cribs was born out of frustration with a broken system. We're building the platform we always wished existed." />
       <section className="max-w-[900px] mx-auto px-5 sm:px-10 pb-[clamp(3rem,7vh,5rem)]">
         <div className="reveal text-[1.05rem] leading-[1.9] text-center" style={{ color: "var(--text-2)" }}>
-          Finding a home in Lagos shouldn't mean chasing agents, paying fees for properties that don't exist, or being shown apartments that look nothing like the photos. We lived that frustration, and we knew there had to be a better way. So we built Cribs, a platform where every listing is verified, every landlord is real, and every naira is protected. No middlemen. No games. Just homes and the people who need them.
+          Finding a home in Lagos shouldn't mean surprise fees, paying for inspections of properties that don't exist, or being shown apartments that look nothing like the photos. We lived that frustration, and we knew there had to be a better way. So we built Cribs, a platform where every listing is verified, every landlord and agent is verified, and every fee is shown upfront. No surprises. No games. Just homes and the people who need them.
         </div>
       </section>
       <section className="max-w-[1200px] mx-auto px-5 sm:px-10 pb-[clamp(4rem,10vh,7rem)]">

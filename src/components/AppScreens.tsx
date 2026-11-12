@@ -283,7 +283,7 @@ export function InspectScreen() {
 
 /* ---------- 4. Pay ---------- */
 export function PayScreen() {
-  const rows = [["Annual rent", "₦1,200,000"], ["Service charge", "Included"], ["Agent fee", "₦0"]];
+  const rows = [["Annual rent", "₦1,200,000"], ["Service charge", "Included"], ["Hidden charges", "₦0"]];
   return (
     <Screen>
       <TopBar title="Secure payment" sub="3 Bedroom Apartment, Lekki" />

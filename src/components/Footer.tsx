@@ -5,6 +5,8 @@ const EXPLORE = [
   { label: "How it works", href: "/how-it-works" },
   { label: "For Tenants", href: "/tenants" },
   { label: "For Landlords", href: "/landlords" },
+  { label: "For Agents", href: "/agents" },
+  { label: "Services", href: "/services" },
   { label: "About Us", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Get the App", href: "/#download" },

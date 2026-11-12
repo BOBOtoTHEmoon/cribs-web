@@ -3,12 +3,19 @@ import { useState } from "react";
 import { ArrowRight, Check, Loader2, Mail, Phone } from "lucide-react";
 
 type Status = "idle" | "loading" | "done" | "already" | "error";
+type Role = "tenant" | "landlord" | "agent";
+
+const ROLES: { key: Role; label: string }[] = [
+  { key: "tenant", label: "Tenant" },
+  { key: "landlord", label: "Landlord" },
+  { key: "agent", label: "Agent" },
+];
 
 const INPUT = "w-full pl-11 pr-4 py-[0.8rem] rounded-[11px] outline-none transition-colors focus:border-[var(--gold)]";
 const INPUT_STYLE: React.CSSProperties = { background: "var(--card-2)", border: "1px solid var(--card-border)", color: "var(--cream)" };
 
 export default function WaitlistForm({ align = "left" }: { align?: "left" | "center" }) {
-  const [role, setRole] = useState<"tenant" | "landlord">("tenant");
+  const [role, setRole] = useState<Role>("tenant");
   const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [company, setCompany] = useState("");
@@ -18,6 +25,16 @@ export default function WaitlistForm({ align = "left" }: { align?: "left" | "cen
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (status === "loading") return;
+    if (!email.trim()) {
+      setStatus("error");
+      setMessage("Please enter your email address.");
+      return;
+    }
+    if (whatsapp.replace(/\D/g, "").length < 10) {
+      setStatus("error");
+      setMessage("Please add your WhatsApp number to join.");
+      return;
+    }
     setStatus("loading");
     setMessage("");
     try {
@@ -62,8 +79,8 @@ export default function WaitlistForm({ align = "left" }: { align?: "left" | "cen
   return (
     <form onSubmit={submit} className={`w-full max-w-[420px] ${center ? "mx-auto" : "mx-auto lg:mx-0"}`} noValidate>
       {/* role switch */}
-      <div className="grid grid-cols-2 gap-1 p-1 rounded-[11px] mb-3" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }} role="radiogroup" aria-label="I am a">
-        {(["tenant", "landlord"] as const).map((r) => (
+      <div className="grid grid-cols-3 gap-1 p-1 rounded-[11px] mb-3" style={{ background: "var(--surface)", border: "1px solid var(--card-border)" }} role="radiogroup" aria-label="I am">
+        {ROLES.map(({ key: r, label }) => (
           <button
             key={r}
             type="button"
@@ -73,7 +90,7 @@ export default function WaitlistForm({ align = "left" }: { align?: "left" | "cen
             className="py-[0.55rem] rounded-[8px] text-[0.82rem] font-semibold transition-all duration-200"
             style={role === r ? { background: "var(--gold)", color: "var(--bg)" } : { color: "var(--text)" }}
           >
-            {r === "tenant" ? "I'm looking to rent" : "I'm a landlord"}
+            {label}
           </button>
         ))}
       </div>
@@ -97,7 +114,7 @@ export default function WaitlistForm({ align = "left" }: { align?: "left" | "cen
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="waitlist-whatsapp" className="sr-only">WhatsApp number (optional)</label>
+          <label htmlFor="waitlist-whatsapp" className="sr-only">WhatsApp number</label>
           <div className="relative flex-1 min-w-0">
             <Phone size={17} className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: "var(--gold)" }} />
             <input
@@ -105,7 +122,8 @@ export default function WaitlistForm({ align = "left" }: { align?: "left" | "cen
               type="tel"
               inputMode="tel"
               autoComplete="tel"
-              placeholder="WhatsApp number (optional)"
+              placeholder="WhatsApp number"
+              required
               value={whatsapp}
               onChange={(e) => { setWhatsapp(e.target.value); if (status === "error") setStatus("idle"); }}
               className={INPUT}
