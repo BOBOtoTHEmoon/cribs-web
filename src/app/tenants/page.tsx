@@ -1,4 +1,5 @@
 import Link from "next/link";
+import GetAppLink from "@/components/GetAppLink";
 import { pageMeta } from "@/lib/seo";
 import PageShell from "@/components/PageShell";
 import Bento, { SearchVisual, TourVisual } from "@/components/Bento";
@@ -33,7 +34,7 @@ export default function Tenants() {
         <div className="reveal rounded-[20px] p-[clamp(2.5rem,5vw,4rem)] text-center relative overflow-hidden panel-h" style={{ background: "linear-gradient(160deg, var(--card-2), var(--card))", border: "1px solid var(--card-border)" }}>
           <h2 className="relative text-[clamp(1.6rem,3vw,2.4rem)] font-extrabold mb-4" style={{ color: "var(--cream)" }}>Ready to find your next home?</h2>
           <p className="relative text-[0.95rem] mb-7 max-w-[420px] mx-auto" style={{ color: "var(--text-2)" }}>Be among the first to find your next home on Cribs. The app is launching soon.</p>
-          <Link href="/#download" className="btn-gold relative">Get the App <ArrowRight size={18} /></Link>
+          <GetAppLink className="btn-gold relative">Get the App <ArrowRight size={18} /></GetAppLink>
         </div>
       </section>
     </PageShell>

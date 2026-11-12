@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import GetAppLink from "@/components/GetAppLink";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Smartphone, Menu, X } from "lucide-react";
@@ -58,9 +59,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Link href="/#download" className="btn-gold hidden sm:inline-flex !px-[1.4rem] !py-[0.6rem] !text-[0.85rem] !rounded-[9px]">
+          <GetAppLink className="btn-gold hidden sm:inline-flex !px-[1.4rem] !py-[0.6rem] !text-[0.85rem] !rounded-[9px]">
             <Smartphone size={16} /> Get the App
-          </Link>
+          </GetAppLink>
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -95,9 +96,9 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-            <Link href="/#download" onClick={close} className="btn-gold w-full mt-3">
+            <GetAppLink onClick={close} className="btn-gold w-full mt-3">
               <Smartphone size={16} /> Get the App
-            </Link>
+            </GetAppLink>
           </div>
         </div>
       </div>

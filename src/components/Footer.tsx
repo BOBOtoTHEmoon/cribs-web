@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
+import GetAppLink from "./GetAppLink";
 
 const EXPLORE = [
   { label: "How it works", href: "/how-it-works" },
@@ -33,7 +34,11 @@ export default function Footer() {
 
         <div className="flex flex-wrap justify-center gap-x-7 gap-y-3 mt-8">
           {EXPLORE.map((l) => (
-            <Link key={l.label} href={l.href} className="lnk text-[0.88rem] font-semibold">{l.label}</Link>
+            l.href === "/#download" ? (
+              <GetAppLink key={l.label} className="lnk text-[0.88rem] font-semibold">{l.label}</GetAppLink>
+            ) : (
+              <Link key={l.label} href={l.href} className="lnk text-[0.88rem] font-semibold">{l.label}</Link>
+            )
           ))}
         </div>
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-4">
